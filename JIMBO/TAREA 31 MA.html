@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios</title>
+    <style>
+        .inversion {
+            background-color: #ffcccc; 
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .sueldo {
+            background-color: #ccffcc; 
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .tienda {
+            background-color: #ccccff; 
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .calificaciones {
+            background-color: #ffffcc; 
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .porcentajes {
+            background-color: #ffccff; 
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .edad {
+            background-color: #ccffff; 
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="inversion">
+        <h1>INVERSIÓN</h1>
+        <form id="inversionForm">
+            <label for="cantidadInvertir">Cantidad a invertir en un mes:</label>
+            <input type="number" id="cantidadInvertir" name="cantidadInvertir" required>
+            <br><br>
+            <button type="button" onclick="calcularInversion()">Calcular Inversión</button>
+        </form>
+        <h2>Resultado: <span id="resultadoInversion"></span></h2>
+    </div>
+
+    <script>
+        function calcularInversion() {
+            const cantidad = document.getElementById('cantidadInvertir').value;
+            const interes = Number(cantidad) * 0.02;
+            const total = interes + Number(cantidad);
+            document.getElementById('resultadoInversion').innerText = total;
+        }
+    </script>
+
+    <div class="sueldo">
+        <h1>Sueldo base mas ventas</h1>
+        <form id="sueldoForm">
+            <label for="sueldoBase">Sueldo base:</label>
+            <input type="number" id="sueldoBase" name="sueldoBase" required>
+            <br><br>
+            <label for="ventaUno">Venta 1:</label>
+            <input type="number" id="ventaUno" name="ventaUno" required>
+            <br><br>
+            <label for="ventaDos">Venta 2:</label>
+            <input type="number" id="ventaDos" name="ventaDos" required>
+            <br><br>
+            <label for="ventaTres">Venta 3:</label>
+            <input type="number" id="ventaTres" name="ventaTres" required>
+            <br><br>
+            <button type="button" onclick="calcularSueldo()">Calcular Sueldo</button>
+        </form>
+        <h2>Resultado: <span id="resultadoSueldo"></span></h2>
+        <h2>Resultado comisiones: <span id="resultadoComisiones"></span></h2>
+    </div>
+
+    <script>
+        function calcularSueldo() {
+            const sueldoBase = Number(document.getElementById('sueldoBase').value);
+            const venta1 = Number(document.getElementById('ventaUno').value);
+            const venta2 = Number(document.getElementById('ventaDos').value);
+            const venta3 = Number(document.getElementById('ventaTres').value);
+
+            const comision1 = venta1 * 0.10;
+            const comision2 = venta2 * 0.10;
+            const comision3 = venta3 * 0.10;
+
+            const totalComisiones = comision1 + comision2 + comision3;
+            const totalSueldo = sueldoBase + totalComisiones;
+
+            document.getElementById('resultadoSueldo').innerText = totalSueldo;
+            document.getElementById('resultadoComisiones').innerText = totalComisiones;
+        }
+    </script>
+
+    <div class="tienda">
+        <h1>TIENDA (PROMOCION 15%)</h1>
+        <form id="descuentoForm">
+            <label for="precioProducto">Producto:</label>
+            <input type="number" id="precioProducto" name="precioProducto" required>
+            <br><br>
+            <button type="button" onclick="calcularDescuento()">Calcular Descuento</button>
+        </form>
+        <h2>Resultado: <span id="resultadoDescuento"></span></h2>
+    </div>
+
+    <script>
+        function calcularDescuento() {
+            const precio = document.getElementById('precioProducto').value;
+            const descuento = Number(precio) * 0.15;
+            const precioFinal = Number(precio) - descuento;
+            document.getElementById('resultadoDescuento').innerText = precioFinal;
+        }
+    </script>
+
+    <div class="calificaciones">
+        <h1>Calificaciones</h1>
+        <h2>Calificación Final en Algoritmos</h2>
+        <label>Calificación parcial 1: <input type="number" id="parcial1"></label><br><br>
+        <label>Calificación parcial 2: <input type="number" id="parcial2"></label><br><br>
+        <label>Calificación parcial 3: <input type="number" id="parcial3"></label><br><br>
+        <label>Examen final: <input type="number" id="examenFinal"></label><br><br>
+        <label>Trabajo final: <input type="number" id="trabajoFinal"></label><br><br>
+        <button onclick="calcularCalificacionFinal()">Calcular Calificación Final</button>
+        <p id="resultadoCalificacion"></p>
+    </div>
+
+    <script>
+        function calcularCalificacionFinal() {
+            let parcial1 = parseFloat(document.getElementById("parcial1").value);
+            let parcial2 = parseFloat(document.getElementById("parcial2").value);
+            let parcial3 = parseFloat(document.getElementById("parcial3").value);
+            let examenFinal = parseFloat(document.getElementById("examenFinal").value);
+            let trabajoFinal = parseFloat(document.getElementById("trabajoFinal").value);
+
+            let promedioParciales = (parcial1 + parcial2 + parcial3) / 3;
+            let calificacionFinal = (promedioParciales * 0.55) + (examenFinal * 0.30) + (trabajoFinal * 0.15);
+
+            document.getElementById("resultadoCalificacion").innerText = "Calificación final: " + calificacionFinal.toFixed(2);
+        }
+    </script>
+
+    <div class="porcentajes">
+        <h1>Porcentaje de Hombres y Mujeres en un Grupo</h1>
+        <label>Número de hombres: <input type="number" id="numHombres"></label><br><br>
+        <label>Número de mujeres: <input type="number" id="numMujeres"></label><br><br>
+        <button onclick="calcularPorcentajes()">Calcular Porcentajes</button>
+        <p id="resultadoPorcentajes"></p>
+    </div>
+
+    <script>
+        function calcularPorcentajes() {
+            let numHombres = parseFloat(document.getElementById("numHombres").value);
+            let numMujeres = parseFloat(document.getElementById("numMujeres").value);
+            let total = numHombres + numMujeres;
+
+            let porcentajeHombres = (numHombres / total) * 100;
+            let porcentajeMujeres = (numMujeres / total) * 100;
+
+            document.getElementById("resultadoPorcentajes").innerText = 
+                "Porcentaje de hombres: " + porcentajeHombres.toFixed(2) + "%, " +
+                "Porcentaje de mujeres: " + porcentajeMujeres.toFixed(2) + "%";
+        }
+    </script>
+
+    <div class="edad">
+        <h1>Calcular Edad</h1>
+        <form id="edadForm">
+            <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+            <br><br>
+            <label for="fechaActual">Fecha Actual:</label>
+            <input type="date" id="fechaActual" name="fechaActual" required>
+            <br><br>
+            <button type="submit">Calcular Edad</button>
+        </form>
+        <p id="resultadoEdad"></p>
+    </div>
+
+    <script>
+        document.getElementById('edadForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const fechaNacimiento = new Date(document.getElementById('fechaNacimiento').value);
+            const fechaActual = new Date(document.getElementById('fechaActual').value);
+
+            let años = fechaActual.getFullYear() - fechaNacimiento.getFullYear();
+            let meses = fechaActual.getMonth() - fechaNacimiento.getMonth();
+            let días = fechaActual.getDate() - fechaNacimiento.getDate();
+
+            if (días < 0) {
+                meses -= 1;
+                días += new Date(fechaActual.getFullYear(), fechaActual.getMonth(), 0).getDate();
+            }
+
+            if (meses < 0) {
+                años -= 1;
+                meses += 12;
+            }
+
+            document.getElementById('resultadoEdad').innerText = `La edad es: ${años} años, ${meses} meses y ${días} días`;
+        });
+    </script>
+</body>
+</html>
