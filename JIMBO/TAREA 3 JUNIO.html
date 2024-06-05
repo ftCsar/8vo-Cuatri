@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invertir Orden de Palabras</title>
+</head>
+<body>
+    <h1>Invertir Orden de Palabras</h1>
+    <input type="text" id="inputCadena">
+    <button onclick="invertirOrden()">Invertir Orden</button>
+    <p id="resultado"></p>
+
+    <script>
+        function invertirOrden() {
+            let cadena = document.getElementById('inputCadena').value;
+            let palabras = cadena.split(' ');
+            let palabrasInvertidas = palabras.reverse();
+            let cadenaInvertida = palabrasInvertidas.join(' ');
+            
+            document.getElementById('resultado').textContent = cadenaInvertida;
+        }
+    </script>
+    
+    <script>
+        function encontrarPalabraMasUnica() {
+            const entrada = document.getElementById('listaPalabras').value;
+            const lista = entrada.split(',');
+
+            let palabraUnica = '';
+            let maxUnicos = 0;
+
+            lista.forEach(item => {
+                const caracteres = new Set(item.toUpperCase().match(/[A-Z]/g) || []);
+                if (caracteres.size > maxUnicos) {
+                    maxUnicos = caracteres.size;
+                    palabraUnica = item;
+                }
+            });
+
+            document.getElementById('resultadoUnico').innerText = `La palabra con más caracteres únicos es: ${palabraUnica}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Encuentra la Palabra con Más Caracteres Únicos</h1>
+    <form onsubmit="event.preventDefault(); encontrarPalabraMasUnica();">
+        <input type="text" id="listaPalabras"><br><br>
+        <button type="submit">Encontrar</button>
+    </form>
+    <p id="resultadoUnico"></p>
+</body>
+</html>
